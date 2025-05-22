@@ -13,7 +13,7 @@ body {
 
 @layer utilities {
   .flex-center {
-    @apply flex justify-center items-center;
+    @apply flex justify-center items-center border-b-4 border-indigo-500 p-10;
   }
 }
 
