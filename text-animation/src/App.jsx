@@ -3,10 +3,9 @@ import "./App.css";
 
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { TextPlugin } from "gsap/all";
+import { SteppedEase, TextPlugin } from "gsap/all";
 
 function App() {
-
   gsap.registerPlugin(TextPlugin);
 
   useGSAP(() => {
@@ -44,63 +43,51 @@ function App() {
       }
     );
 
-  
     var tl = gsap.timeline({ repeat: -1 });
-    tl.from(".fading-txt h1", { duration: 1, x: 100, opacity: 0.5, repeatDelay: 1, ease: "bounce" });
-
-
-    const t2 = gsap.timeline({ onStart: () => blinking.play(), repeat: -1 });
-
-    t2.from(".typewriter-txt h1:nth-child(1)", {
-      text: {
-        value: "",
-        delimiter: ""
-      },
-      duration: 2,
-      ease: "none"
-    });
-    t2.from(".typewriter-txt h1:nth-child(2)", {
-      text: {
-        value: "",
-        delimiter: ""
-      },
-      duration: 2,
-      ease: "none"
+    tl.from(".fading-txt h1", {
+      duration: 1,
+      x: 100,
+      opacity: 0.5,
+      repeatDelay: 1,
+      ease: "bounce",
     });
 
-    t2.from(".typewriter-txt h1:nth-child(3)", {
-      text: {
-        value: "",
-        delimiter: ""
+    let cursor = document.querySelector("#cursor");
+    let text = document.querySelector("#text");
+
+    gsap.fromTo(
+      cursor,
+      { autoAlpha: 0, x: 2 },
+      { autoAlpha: 1, duration: 0.5, repeat: -1, ease: SteppedEase.config(1) }
+    );
+
+    gsap.fromTo(
+      "#text",
+      {
+        text: {
+          value: "",
+          delimiter: "",
+        },
       },
-      duration: 2,
-      ease: "none"
-    });
-
-
-    // gsap.to("#cursor", {
-    //   opacity: 0,
-    //   duration: 0.6,
-    //   ease: "power2.inOut",
-    //   repeat: -1,
-    //   yoyo: true
-    // });
-
-    // const blinking = gsap.timeline({
-    //   repeat: -1,
-    //   paused: true
-    // });
-
-    // blinking.from("#cursor", {
-    //   opacity: -100,
-    //   ease: "steps(1)"
-    // });
-
+      {
+        text: {
+          value: text.innerHTML,
+          delimiter: "",
+        },
+        duration: 5,
+        delay: 1,
+        ease: "none",
+        repeat: -1,
+        yoyo: true,
+        onUpdate: () => {
+          text.appendChild(cursor);
+        },
+      }
+    );
   });
 
   return (
     <>
-
       <div className="grid grid-cols-2 gap-4">
         <div className="motion-txt-right-left flex-col flex-center">
           <h1>Welcome!</h1>
@@ -121,10 +108,10 @@ function App() {
         </div>
 
         <div className="typewriter-txt flex-col flex-center">
-          <h1>Welcome!</h1>
-          <h1>This is motion text animation</h1>
-          <h1>Good luck!</h1>
-          {/* <span id="cursor">|</span> */}
+          <h1 className="type-text" id="text">
+            Welcome! <br /> This is motion text animation <br /> Good luck!
+          </h1>
+          <span id="cursor">|</span>
         </div>
       </div>
     </>
