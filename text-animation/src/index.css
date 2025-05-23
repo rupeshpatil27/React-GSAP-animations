@@ -13,12 +13,24 @@ body {
 
 @layer utilities {
   .flex-center {
-    @apply flex justify-center items-center border-b-4 border-indigo-500 p-10;
+    @apply flex justify-center items-start border-b-4 border-indigo-500 p-10 text-left;
   }
 }
 
 
-h1{
+h1,span{
   font-size: 30px;
   font-weight: bold;
 }
+
+
+.cursor {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
