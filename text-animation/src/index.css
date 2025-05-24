@@ -23,6 +23,10 @@ h1,span{
   font-weight: bold;
 }
 
+.repeat-type-text-2{
+  color: rgb(197, 241, 74);
+}
+
 
 .cursor {
   animation: blink 1s step-end infinite;

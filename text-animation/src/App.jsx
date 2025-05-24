@@ -3,10 +3,12 @@ import "./App.css";
 
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { SteppedEase, TextPlugin } from "gsap/all";
+import { SplitText, SteppedEase, TextPlugin } from "gsap/all";
 
 function App() {
-  gsap.registerPlugin(TextPlugin);
+  const position = ["Frontend Developer", "Web Developer"];
+
+  gsap.registerPlugin(TextPlugin, SplitText);
 
   useGSAP(() => {
     gsap.fromTo(
@@ -84,6 +86,70 @@ function App() {
         },
       }
     );
+
+    let split = SplitText.create(".split-txt h1", { type: "words,chars" });
+
+    gsap.from(split.chars, {
+      duration: 0.6,
+      x: 150,
+      autoAlpha: 0,
+      stagger: 0.05,
+      repeat: -1,
+    });
+
+    let cursor2 = document.querySelector("#cursor-2");
+    let text2 = document.querySelector(".type-text-2");
+    gsap.fromTo(
+      cursor2,
+      { autoAlpha: 0, x: 2 },
+      { autoAlpha: 1, duration: 0.5, repeat: -1, ease: SteppedEase.config(1) }
+    );
+
+    gsap.fromTo(
+      ".type-text-2",
+      {
+        text: {
+          value: "",
+          delimiter: "",
+        },
+      },
+      {
+        text: {
+          value: text2.innerHTML,
+          delimiter: "",
+        },
+        duration: 5,
+        delay: 1,
+        ease: "none",
+        onUpdate: () => {
+          text2.appendChild(cursor2);
+        },
+        onComplete: () => {
+          animation.play();
+        },
+      }
+    );
+
+    let repeatText = document.querySelector(".repeat-type-text-2");
+    let animation = gsap.timeline({ paused: true, repeat: -1 });
+
+    position.forEach((item) => {
+
+      const childAnimation = gsap.timeline({ yoyo: true, repeat: 1,repeatDelay:1 });
+      childAnimation.to(repeatText, {
+        text: {
+          value: item,
+          delimiter: "",
+        },
+        duration: 1.5,
+        ease: "none",
+        onUpdate: () => {
+          repeatText.appendChild(cursor2);
+        },
+      });
+
+      animation.add(childAnimation)
+    });
   });
 
   return (
@@ -109,9 +175,24 @@ function App() {
 
         <div className="typewriter-txt flex-col flex-center">
           <h1 className="type-text" id="text">
-            Welcome! <br /> This is motion text animation <br /> Good luck!
+            Welcome! <br /> This is Typewriter text animation <br /> Good luck!
           </h1>
           <span id="cursor">|</span>
+        </div>
+
+        <div className="split-txt flex-col flex-center">
+          <h1>Welcome!</h1>
+          <h1>This is SplitText text animation</h1>
+          <h1>Good luck!</h1>
+        </div>
+
+        <div className="typewriter-txt2">
+          <span className="type-text-2">
+            Welcome! <br /> This is new Typewriter text animation <br /> Good
+            luck!
+          </span>
+          <span className="repeat-type-text-2"></span>
+          <span id="cursor-2">|</span>
         </div>
       </div>
     </>
