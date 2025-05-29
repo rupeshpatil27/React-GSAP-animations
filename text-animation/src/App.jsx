@@ -135,7 +135,7 @@ function App() {
 
     position.forEach((item) => {
 
-      const childAnimation = gsap.timeline({ yoyo: true, repeat: 1,repeatDelay:1 });
+      const childAnimation = gsap.timeline({ yoyo: true, repeat: 1, repeatDelay: 1 });
       childAnimation.to(repeatText, {
         text: {
           value: item,
@@ -150,6 +150,29 @@ function App() {
 
       animation.add(childAnimation)
     });
+
+
+    let Text3 = document.querySelector(".type-text-3");
+    // let stratAnimation = gsap.timeline({});
+
+    gsap.fromTo(
+      ".type-text-3",
+      {
+        y: 50,
+        // opacity: 0,
+      },
+      {
+        y: 0,
+        // opacity: 1,
+        stagger: 0.2,
+        duration: 2,
+        ease: "power2.inOut",
+        // onComplete: () => {
+        //   secondAnimation.play();
+        // },
+      }
+    );
+
   });
 
   return (
@@ -193,6 +216,15 @@ function App() {
           </span>
           <span className="repeat-type-text-2"></span>
           <span id="cursor-2">|</span>
+        </div>
+
+        <div className="typewriter-txt3">
+          <span className="type-text-3">
+            Welcome! <br /> This is new Typewriter text animation <br /> Good
+            luck!
+          </span>
+          <span className="repeat-text-3"></span>
+          <span id="cursor-3">|</span>
         </div>
       </div>
     </>
