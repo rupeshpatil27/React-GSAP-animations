@@ -152,26 +152,57 @@ function App() {
     });
 
 
-    let Text3 = document.querySelector(".type-text-3");
-    // let stratAnimation = gsap.timeline({});
+    let stratSplitAnimation = SplitText.create(".type-text-3", { type: "words,chars" });
 
-    gsap.fromTo(
-      ".type-text-3",
+    gsap.fromTo(stratSplitAnimation.chars,
       {
-        y: 50,
-        // opacity: 0,
+        x: -500,
+        opacity: 0
       },
       {
-        y: 0,
-        // opacity: 1,
-        stagger: 0.2,
-        duration: 2,
-        ease: "power2.inOut",
-        // onComplete: () => {
-        //   secondAnimation.play();
-        // },
+        x: 0,
+        opacity: 1,
+        duration: 1,
+        onComplete: () => {
+          cursorAnimation.play()
+          secondAnimation.play()
+        }
       }
     );
+
+    let cursorAnimation = gsap.timeline({ paused: true });
+
+    let cursor3 = document.querySelector("#cursor-3");
+
+    cursorAnimation.fromTo(
+      cursor3,
+      { autoAlpha: 0, x: 2 },
+      { autoAlpha: 1, duration: 0.5, repeat: -1, ease: SteppedEase.config(1) }
+    );
+
+    let repeatText3 = document.querySelector(".repeat-text-3");
+    let secondAnimation = gsap.timeline({ paused: true, repeat: -1 });
+
+    position.forEach((item) => {
+      const childAnimation = gsap.timeline({
+        yoyo: true,
+        repeat: 1,
+        repeatDelay: 1,
+      });
+      childAnimation.to(repeatText3, {
+        text: {
+          value: item,
+          delimiter: "",
+        },
+        duration: 1,
+        ease: "none",
+        onUpdate: () => {
+          repeatText3.appendChild(cursor3);
+        },
+      });
+
+      secondAnimation.add(childAnimation)
+    });
 
   });
 
@@ -220,10 +251,10 @@ function App() {
 
         <div className="typewriter-txt3">
           <span className="type-text-3">
-            Welcome! <br /> This is new Typewriter text animation <br /> Good
-            luck!
-          </span>
-          <span className="repeat-text-3"></span>
+            Welcome! <br />
+            This is new Typewriter text animation <br />
+            Good luck! </span>
+          <span className="repeat-text-3 text-amber-300"></span>
           <span id="cursor-3">|</span>
         </div>
       </div>
