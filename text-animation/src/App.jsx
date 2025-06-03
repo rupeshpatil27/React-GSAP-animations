@@ -257,6 +257,15 @@ function App() {
           <span className="repeat-text-3 text-amber-300"></span>
           <span id="cursor-3">|</span>
         </div>
+       
+        <div className="typewriter-txt3">
+          <span className="type-text-3">
+            Welcome! <br />
+            This is new Typewriter text animation <br />
+            Good luck! </span>
+          <span className="repeat-text-3 text-amber-300"></span>
+          <span id="cursor-3">|</span>
+        </div>
       </div>
     </>
   );
