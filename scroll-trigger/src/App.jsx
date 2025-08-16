@@ -2,6 +2,7 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LetterExplosion from "./component/LetterExplosion";
+import HorizontalCarousel from "./component/HorizontalCarousel";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -40,7 +41,12 @@ const ScrollAnimation = () => {
         </div>
       </div>
       <LetterExplosion text={"This is demo text"}/>
-      <div className="min-h-screen"></div>
+
+      <HorizontalCarousel panels={[
+      { title: 'Panel One', content: 'Content 1' },
+      { title: 'Panel Two', content: 'Content 2' },
+      { title: 'Panel Three', content: 'Content 3' },
+    ]} />
     </>
   );
 };

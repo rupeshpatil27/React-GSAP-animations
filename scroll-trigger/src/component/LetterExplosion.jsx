@@ -21,7 +21,7 @@ const LetterExplosion = ({ text }) => {
           start: "top center",
           end: "bottom center",
           scrub: 0.5,
-          markers: true,
+        //   markers: true,
           invalidateOnRefresh: true,
         },
       });
@@ -29,7 +29,7 @@ const LetterExplosion = ({ text }) => {
   }, []);
 
   return (
-    <div ref={container} className="flex flex-wrap justify-center mt-20">
+    <div ref={container} className="flex flex-wrap justify-center mt-20 h-52">
       {text.split("").map((char, i) => (
         <span
           key={i}
