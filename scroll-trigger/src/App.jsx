@@ -1,6 +1,7 @@
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import LetterExplosion from "./component/LetterExplosion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,7 +15,7 @@ const ScrollAnimation = () => {
         scrollTrigger: {
           trigger: element,
           start: "top center",
-          markers: true, // for debugging
+          markers: false, // for debugging
           toggleActions: "play none none reverse",
         },
       });
@@ -38,6 +39,7 @@ const ScrollAnimation = () => {
           <p className="mt-4">This element will also trigger an animation on scroll.</p>
         </div>
       </div>
+      <LetterExplosion text={"This is demo text"}/>
       <div className="min-h-screen"></div>
     </>
   );
