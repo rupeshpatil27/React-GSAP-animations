@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LetterExplosion from "./component/LetterExplosion";
 import HorizontalCarousel from "./component/HorizontalCarousel";
 import ScrollTextSlide from "./component/ScrollTextSlide";
+import FeatureGrid from "./component/FeatureGrid";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -50,6 +51,12 @@ const ScrollAnimation = () => {
       ]} />
 
       <ScrollTextSlide>scrolling text here</ScrollTextSlide>
+
+      <FeatureGrid features={[
+      { title: 'Fast', description: 'Lightning quick performance.' },
+      { title: 'Responsive', description: 'Looks great everywhere.' },
+      { title: 'Dynamic', description: 'Animations that delight.' },
+    ]} />
 
       <div className="min-h-screen"></div>
     </>
