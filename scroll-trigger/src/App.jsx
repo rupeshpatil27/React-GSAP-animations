@@ -5,12 +5,24 @@ import LetterExplosion from "./component/LetterExplosion";
 import HorizontalCarousel from "./component/HorizontalCarousel";
 import ScrollTextSlide from "./component/ScrollTextSlide";
 import FeatureGrid from "./component/FeatureGrid";
+import { ScrollSmoother } from "gsap/ScrollSmoother";
+import { useRef } from "react";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger,ScrollSmoother);
 
 const ScrollAnimation = () => {
 
+  const homeRef=useRef(null)
+
   useGSAP(() => {
+
+    const smoother = ScrollSmoother.create({
+      smooth: 2, 
+      effects: true, 
+      content: homeRef.current, 
+      smoothTouch: 0.1,
+    });
+
     gsap.utils.toArray(".scroll-element").forEach((element) => {
       gsap.from(element, {
         opacity: 0,
@@ -27,7 +39,7 @@ const ScrollAnimation = () => {
   }, []);
 
   return (
-    <>
+    <div className="" ref={homeRef}>
       <div className="h-[50vh]"></div>
       <div className="space-y-8 p-8">
         <h1 className="text-center text-4xl font-bold">GSAP ScrollTrigger Animation</h1>
@@ -53,13 +65,13 @@ const ScrollAnimation = () => {
       <ScrollTextSlide>scrolling text here</ScrollTextSlide>
 
       <FeatureGrid features={[
-      { title: 'Fast', description: 'Lightning quick performance.' },
-      { title: 'Responsive', description: 'Looks great everywhere.' },
-      { title: 'Dynamic', description: 'Animations that delight.' },
-    ]} />
+        { title: 'Fast', description: 'Lightning quick performance.' },
+        { title: 'Responsive', description: 'Looks great everywhere.' },
+        { title: 'Dynamic', description: 'Animations that delight.' },
+      ]} />
 
       <div className="min-h-screen"></div>
-    </>
+    </div>
   );
 };
 
