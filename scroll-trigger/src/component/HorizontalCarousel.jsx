@@ -18,7 +18,6 @@ const HorizontalCarousel = ({ panels }) => {
       scrollTrigger: {
         trigger: carouseContainer.current,
         pin: true,
-        markers:true,
         scrub: 1,
         end: () => `+=${totalWidth}`,
       },
