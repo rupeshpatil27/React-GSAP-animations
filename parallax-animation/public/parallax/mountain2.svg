@@ -1,0 +1,23 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+	<title>1881(2)</title>
+	<defs>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp1">
+			<path d="m800 400h-800v-400h800z"/>
+		</clipPath>
+		<linearGradient id="g1" x2="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0,-132.876,819.413,0,396.779,331.759)">
+			<stop offset="0" stop-color="#1cb9ca"/>
+			<stop offset=".51" stop-color="#3767b5"/>
+			<stop offset="1" stop-color="#333cbe"/>
+		</linearGradient>
+	</defs>
+	<style>
+		.s0 { fill: url(#g1) } 
+	</style>
+	<g id="_Artboards_">
+	</g>
+	<g id="space">
+		<g id="&lt;Clip Group&gt;" clip-path="url(#cp1)">
+			<path id="-e-mountain2" class="s0" d="m639.1 311.8l-132.3-11.4-14.1-7v-9.5l-6.5 3.1v-18.8l-5 10v22.2h-28l-4-7-5.5-3.3-5-5.6h-30.6l-18.3-17.6-12.2-7.7-10.5-16.7-23-16.8-6.5-13.6-8.6-8v-5.2l-10 4.7-6 49.2-4-10.3-6.5-0.3-6-14.6-7.8-4.4-9.1-6.5v-9.1l-9.4 14h-6.8v3.5l-8.5 13v10l-6.2 4.2-2.8 6-5.5 2.8-3.7 12.2-2 2.3-8.6-17.3-5.5 4.8-6.2 0.7-7.3-2.7-11.2 6-16.8-14.3-11 0.1-4.8 11.9-17.8-16.2-10.5 4.5v4.7l-5 13.8-15 12.2-14.5 5-9.1 4.8-90.9-1.5-1.5 7.7-1.2 13.5 1.2 18.5 279-8.1h2 537.3z"/>
+		</g>
+	</g>
+</svg>
