@@ -10,3 +10,4 @@ This project showcases creative and performance-optimized UI effects powered by 
 - ⏱ Timeline-based animations
 - 🔁 Scroll triggers and transitions
 - 🧩 Modular animation components
+- 🌌 Parallax Scrolling Animations
